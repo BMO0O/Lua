@@ -1,5 +1,5 @@
-local a = {1,2,3,4}
-for key, value in pairs({table.unpack(a, #a/2+1, #a)}) do
+
+--[[for key, value in pairs({table.unpack(a, #a/2+1, #a)}) do
     print(key, value)
 end
 
@@ -12,5 +12,31 @@ function table.slice(tbl, first, last, step)
 
     return sliced
 end
+--]]
 
-local
+local a = {10,22,35,44,58,600}
+
+function binarySearch(array, target)
+
+    if #array==nil then
+        return -1
+    end
+
+    local low = 1
+    local high = #array
+
+    while low <= high do
+        local mid = ( low + high ) // 2
+        if target == array[mid] then
+            return target
+        elseif array[mid] > target then
+            high = mid - 1
+        elseif array[mid] < target then
+            low = mid + 1
+        end
+    end
+
+    return -1
+end
+
+print(binarySearch(a, 600))
